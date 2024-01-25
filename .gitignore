@@ -4,3 +4,9 @@
 .Ruserdata
 *.tar.gz
 .DS_Store
+bwa_index
+ht2_index
+genome.gff.gz
+genome.gtf
+genome.fasta
+genome.fasta.fai
