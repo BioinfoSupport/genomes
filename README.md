@@ -11,7 +11,7 @@ cd genomes
 
 sbatch --time=8:00:00 --partition=shared-bigmem --ntasks=1 --cpus-per-task=6 --mem=256G <<EOF
 #!/bin/bash
-singularity exec 'docker://unigebsp/ngs:v1.0' make
+singularity exec --bind $(realpath ./) 'docker://unigebsp/ngs:v1.0' make
 EOF
 ```
 
