@@ -1,7 +1,7 @@
 # Merge genome directories
 GENOME_DIRS=../Dd/ ../Mm/ 
 
-all:genome.fasta genome.fasta.fai genome.gtf ht2_index/done bwa_index/done
+all:genome.fasta genome.fasta.fai genome.gtf ht2_index/done bwa_index/done seqinfo.tsv
 
 clean:;rm -rf genome.fasta genome.fasta.fai genome.gtf ht2_index/ bwa_index/
 
@@ -13,6 +13,13 @@ genome.fasta:$(addsuffix /genome.fasta,$(GENOME_DIRS))
 genome.gtf:$(addsuffix genome.gtf,$(GENOME_DIRS))
 	cat $^ > "$@"
 
+
+#-#-#-#-#-#-#-#-#-#-#
+# Seqinfo
+#-#-#-#-#-#-#-#-#-#-#
+seqinfo.tsv:SHELL=bash
+seqinfo.tsv:$(addsuffix /genome.fasta.fai,$(GENOME_DIRS))
+	cat $(foreach f,$^,<(awk '{print $$1 "\t$(shell basename $(dir $f))"}' $f)) > $@
 
 #-#-#-#-#-#-#-#-#-#-#
 # Genome Indexing
