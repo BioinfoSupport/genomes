@@ -10,3 +10,4 @@ genome.gff.gz
 genome.gtf
 genome.fasta
 genome.fasta.fai
+seqinfo.tsv
