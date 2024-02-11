@@ -4,9 +4,9 @@
 #
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
-.PHONY:ALL CLEAN
-ALL:genome.fasta genome.gtf.gz genome.gff.gz ALL_EUKARYOTE
-CLEAN:CLEAN_GENERIC
+.PHONY:all clean
+all:genome.fasta genome.gtf.gz genome.gff.gz all_eukaryote
+clean:clean_generic
 	rm -rf genome.gff.gz
 
 BASE_NCBI_URL = https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/004/695/GCF_000004695.1_dicty_2.7/GCF_000004695.1_dicty_2.7

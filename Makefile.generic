@@ -9,10 +9,10 @@ SHELL=bash
 #-#-#-#-#-#-#-#-#-#-#
 # Main targets
 #-#-#-#-#-#-#-#-#-#-#
-.PHONY:ALL_PROKARYOTE ALL_EUKARYOTE CLEAN_GENERIC
-ALL_PROKARYOTE:genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/done ht2_index/done.woss
-ALL_EUKARYOTE:genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/done ht2_index/done.ss
-CLEAN_GENERIC:;rm -rf genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/ ht2_index/
+.PHONY:all_prokaryote all_eukaryote clean_generic
+all_prokaryote:genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/done ht2_index/done.woss
+all_eukaryote:genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/done ht2_index/done.ss
+clean_generic:;rm -rf genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/ ht2_index/
 
 #-#-#-#-#-#-#-#-#-#-#
 # Genome Indexing

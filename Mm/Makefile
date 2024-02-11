@@ -4,9 +4,9 @@
 #
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
-.PHONY:ALL CLEAN
-ALL:genome.fasta genome.gtf.gz genome.gff.gz ALL_PROKARYOTE
-CLEAN:CLEAN_GENERIC
+.PHONY:all clean
+all:genome.fasta genome.gtf.gz genome.gff.gz all_prokaryote
+clean:clean_generic
 	rm -rf genome.gff.gz
 
 BASE_NCBI_URL = https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/018/345/GCF_000018345.1_ASM1834v1/GCF_000018345.1_ASM1834v1

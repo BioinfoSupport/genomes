@@ -1,8 +1,8 @@
 
 
-.PHONY:ALL CLEAN
-ALL:genome.fasta genome.gtf.gz ALL_EUKARYOTE seqinfo.tsv
-CLEAN:CLEAN_GENERIC
+.PHONY:all clean
+all:genome.fasta genome.gtf.gz all_eukaryote seqinfo.tsv
+clean:clean_generic
 	rm -rf seqinfo.tsv
 
 

@@ -2,15 +2,15 @@
 
 SUBDIRS = lm/ Mm/ Dd/ Dd+Mm/ GRCh38-r45/ GRCh38+lm/ GRCm39-M34/
 
-ALL:$(addsuffix /ALL,$(SUBDIRS))
-CLEAN:$(addsuffix /CLEAN,$(SUBDIRS))
+all:$(addsuffix /all,$(SUBDIRS))
+clean:$(addsuffix /clean,$(SUBDIRS))
 
 tgz:$(SUBDIRS:%/=%.tar.gz)
 
-$(addsuffix /ALL,$(SUBDIRS)):;$(MAKE) -C $(@D) ALL
-$(addsuffix /CLEAN,$(SUBDIRS)):;$(MAKE) -C $(@D) CLEAN
+$(addsuffix /all,$(SUBDIRS)):;$(MAKE) -C $(@D) all
+$(addsuffix /clean,$(SUBDIRS)):;$(MAKE) -C $(@D) clean
 
-%.tar.gz:%/
-	tar --dereference --hard-dereference -zcf "$@" "$<"
+%.tar.gz:%/all
+	tar --dereference --hard-dereference -zcf "$@" "$(<D)"
 
 .PHONY: all $(SUBDIRS)

@@ -4,9 +4,9 @@
 #
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
 
-.PHONY:ALL CLEAN
-ALL:genome.fasta genome.gtf.gz genome.gff.gz ALL_EUKARYOTE
-CLEAN:CLEAN_GENERIC
+.PHONY:all clean
+all:genome.fasta genome.gtf.gz genome.gff.gz all_eukaryote
+clean:clean_generic
 	rm -rf genome.gff.gz
 
 BASE_URL = https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_45
