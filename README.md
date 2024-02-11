@@ -26,7 +26,7 @@ Currently available genomes are:
 ```
 git clone https://github.com/BioinfoSupport/genomes.git
 cd genomes
-docker run --rm -v $PWD/:/home/rstudio/workdir unigebsp/ngs:v1.1 make lm/
+docker run --rm -v $PWD/:/home/rstudio/workdir unigebsp/ngs:v1.1 make lm/ Mm/ Dd/ Dd+Mm/
 ```
 
 

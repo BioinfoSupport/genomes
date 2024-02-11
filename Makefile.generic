@@ -1,0 +1,39 @@
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+#
+# Generic rules for Makefile in genome project
+#
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+
+SHELL=bash
+
+#-#-#-#-#-#-#-#-#-#-#
+# Main targets
+#-#-#-#-#-#-#-#-#-#-#
+.PHONY:ALL_PROKARYOTE ALL_EUKARYOTE CLEAN_GENERIC
+ALL_PROKARYOTE:genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/done ht2_index/done.woss
+ALL_EUKARYOTE:genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/done ht2_index/done.ss
+CLEAN_GENERIC:;rm -rf genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/ ht2_index/
+
+#-#-#-#-#-#-#-#-#-#-#
+# Genome Indexing
+#-#-#-#-#-#-#-#-#-#-#
+%.fasta.fai:%.fasta;samtools faidx '$<'
+
+# BWA genome indexing
+bwa_index/done:genome.fasta
+	mkdir -p "$(@D)" && bwa index -p "bwa_index/index" "$<" && touch "$@"
+
+# HISAT2 genome indexing (no splicing sites)
+ht2_index/done.woss:genome.fasta
+	mkdir -p "$(@D)" \
+	  && hisat2-build -p 6 "genome.fasta" "ht2_index/index" \
+	  && touch $@
+
+# HISAT2 genome indexing (with splicing sites)
+ht2_index/done.ss:genome.fasta genome.gtf.gz
+	mkdir -p "$(@D)" \
+	  && hisat2_extract_exons.py <(zcat genome.gtf.gz) > "$(@D)/genome.exon" \
+	  && hisat2_extract_splice_sites.py <(zcat genome.gtf.gz) > "$(@D)/genome.ss" \
+	  && hisat2-build -p 6 --exon "$(@D)/genome.exon" --ss "$(@D)/genome.ss" "genome.fasta" "ht2_index/index" \
+	  && touch $@
+

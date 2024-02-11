@@ -9,7 +9,7 @@ CLEAN:CLEAN_GENERIC
 #-#-#-#-#-#-#-#-#-#-#
 # Merge genomes
 #-#-#-#-#-#-#-#-#-#-#
-GENOME_DIRS=../GRCh38-r45/ ../lm/ 
+GENOME_DIRS=../Dd/ ../Mm/ 
 
 genome.fasta:$(addsuffix /genome.fasta,$(GENOME_DIRS))
 	cat $^ > "$@"
@@ -20,4 +20,7 @@ seqinfo.tsv:$(addsuffix /genome.fasta.fai,$(GENOME_DIRS))
 	cat $(foreach fai,$^,<(awk '{print $$1 "\t$(shell basename $(dir $fai))"}' $fai)) > $@
 
 include Makefile.generic
+
+
+
 
