@@ -11,6 +11,6 @@ $(addsuffix /all,$(SUBDIRS)):;$(MAKE) -C $(@D) all
 $(addsuffix /clean,$(SUBDIRS)):;$(MAKE) -C $(@D) clean
 
 %.tar.gz:%/all
-	tar --dereference --hard-dereference -zcf "$@" "$(<D)"
+	tar -hzcf "$@" "$(<D)"
 
 .PHONY: all $(SUBDIRS)
