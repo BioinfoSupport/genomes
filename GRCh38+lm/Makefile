@@ -17,7 +17,7 @@ genome.gtf.gz:$(addsuffix genome.gtf.gz,$(GENOME_DIRS))
 	zcat $^ | pigz > "$@"
 
 seqinfo.tsv:$(addsuffix /genome.fasta.fai,$(GENOME_DIRS))
-	cat $(foreach fai,$^,<(awk '{print $$1 "\t$(shell basename $(dir $(fai)))"}' $(fai))) > $@
+	cat $(foreach fai,$^,<(awk 'BEGIN{print "contig\tgenome"}{print $$1 "\t$(shell basename $(dir $(fai)))"}' $(fai))) > $@
 
 include Makefile.generic
 
