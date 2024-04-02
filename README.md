@@ -22,7 +22,7 @@ Currently available genomes are:
 
 
 
-# Build a reference locally with docker
+# Build a reference localy with docker
 ```
 git clone https://github.com/BioinfoSupport/genomes.git
 cd genomes

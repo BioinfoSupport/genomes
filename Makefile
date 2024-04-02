@@ -5,7 +5,7 @@ SUBDIRS = lm Mm Dd Dd+Mm gencode-GRCh38-r45 GRCh38+lm gencode-GRCm39-M34 ensembl
 all:$(addsuffix /all,$(SUBDIRS))
 clean:$(addsuffix /clean,$(SUBDIRS))
 
-tgz:$(SUBDIRS:%/=%.tar.gz)
+tgz:$(SUBDIRS:%=%.tar.gz)
 
 $(addsuffix /all,$(SUBDIRS)):;$(MAKE) -C $(@D) all
 $(addsuffix /clean,$(SUBDIRS)):;$(MAKE) -C $(@D) clean
