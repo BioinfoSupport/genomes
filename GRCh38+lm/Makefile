@@ -9,7 +9,7 @@ clean:clean_generic
 #-#-#-#-#-#-#-#-#-#-#
 # Merge genomes
 #-#-#-#-#-#-#-#-#-#-#
-GENOME_DIRS=../GRCh38-r45/ ../lm/ 
+GENOME_DIRS=../gencode-GRCh38-r45/ ../lm/ 
 
 genome.fasta:$(addsuffix /genome.fasta,$(GENOME_DIRS))
 	cat $^ > "$@"
