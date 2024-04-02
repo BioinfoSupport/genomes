@@ -26,7 +26,7 @@ Currently available genomes are:
 ```
 git clone https://github.com/BioinfoSupport/genomes.git
 cd genomes
-docker run --rm -v $PWD/:/home/rstudio/workdir unigebsp/ngs:v1.1 make lm/all Mm/all Dd/all Dd+Mm/all
+docker run --rm -v $PWD/:/home/rstudio/workdir unigebsp/ngs make lm/all Mm/all Dd/all Dd+Mm/all
 ```
 
 
@@ -37,7 +37,7 @@ cd genomes
 
 sbatch --time=8:00:00 --partition=shared-bigmem --ntasks=1 --cpus-per-task=6 --mem=256G <<EOF
 #!/bin/bash
-singularity exec --bind $(realpath ./) 'docker://unigebsp/ngs:v1.1' make
+singularity exec --bind $(realpath ./) 'docker://unigebsp/ngs' make ensembl-GRCh38-110/all
 EOF
 ```
 
