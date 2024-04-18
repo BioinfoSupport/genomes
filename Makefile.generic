@@ -41,13 +41,13 @@ ht2_index/done.ss:genome.fasta genome.gtf.gz
 # RSEM genome indexing (no splicing sites)
 rsem_index/done:genome.fasta
 	mkdir -p "$(@D)" \
-  && rsem-prepare-reference --num-threads $(NCPU) --hisat2-hca genome.fasta rsem_index/index
+  && rsem-prepare-reference --num-threads $(NCPU) --hisat2-hca genome.fasta rsem_index/index \
 	&& touch $@
 
 # RSEM genome indexing (with splicing sites)
 rsem_index/done.gtf:genome.fasta genome.gtf.gz
 	mkdir -p "$(@D)" \
-  && rsem-prepare-reference --num-threads $(NCPU) --hisat2-hca --gtf <(zcat genome.gtf.gz) genome.fasta rsem_index/index
+  && rsem-prepare-reference --num-threads $(NCPU) --hisat2-hca --gtf <(zcat genome.gtf.gz) genome.fasta rsem_index/index \
 	&& touch $@
 
 
