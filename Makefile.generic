@@ -11,9 +11,9 @@ NCPU ?= 6
 # Main targets
 #-#-#-#-#-#-#-#-#-#-#
 .PHONY:all_prokaryote all_eukaryote clean_generic
-all_prokaryote:genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/done ht2_index/done.woss rsem_index/done
-all_eukaryote:genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/done ht2_index/done.ss rsem_index/done.gtf
-clean_generic:;rm -rf genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/ ht2_index/ rsem_index/
+all_prokaryote:genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/done ht2_index/done.woss
+all_eukaryote:genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/done ht2_index/done.ss
+clean_generic:;rm -rf genome.fasta genome.fasta.fai genome.gtf.gz bwa_index/ ht2_index/
 
 #-#-#-#-#-#-#-#-#-#-#
 # Genome Indexing
@@ -38,17 +38,6 @@ ht2_index/done.ss:genome.fasta genome.gtf.gz
 	  && hisat2-build -p $(NCPU) --exon "$(@D)/genome.exon" --ss "$(@D)/genome.ss" "genome.fasta" "ht2_index/index" \
 	  && touch $@
 
-# RSEM genome indexing (no splicing sites)
-rsem_index/done:genome.fasta
-	mkdir -p "$(@D)" \
-  && rsem-prepare-reference --num-threads $(NCPU) --hisat2-hca genome.fasta rsem_index/index \
-	&& touch $@
-
-# RSEM genome indexing (with splicing sites)
-rsem_index/done.gtf:genome.fasta genome.gtf.gz
-	mkdir -p "$(@D)" \
-  && rsem-prepare-reference --num-threads $(NCPU) --hisat2-hca --gtf <(zcat genome.gtf.gz) genome.fasta rsem_index/index \
-	&& touch $@
 
 
 
