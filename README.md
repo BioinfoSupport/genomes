@@ -30,7 +30,7 @@ docker run --rm -v $PWD/:/home/rstudio/workdir unigebsp/ngs make lm/all Mm/all D
 ```
 
 
-# Build reference genomes on Baobab
+# Build reference genomes on HPC cluster
 ```
 git clone https://github.com/BioinfoSupport/genomes.git
 cd genomes
