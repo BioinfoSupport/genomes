@@ -68,6 +68,15 @@ EOF
 
 
 
-# Adding new reference genomes
+# Add new reference genomes
+
+To add new reference genomes, one may use the examples already available in the repository. 
+There are basically 3 situations: 
+
+ - Prokaroyte genomes: (consult `lm` genome example)
+ - Eukaryote genomes: Here we need to instruct HISAT2 to index the genome with the knowledge of the genes annoation to handle correctly splice-junctions (consult `ensembl-GRCh38-110`example` example). 
+ - Combined genomes: Here we recommand to create each genome independently and then combine them in another genome (consult the `Dd+Mm` example).
+
+
 
 
