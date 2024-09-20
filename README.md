@@ -26,7 +26,7 @@ Currently available genomes are:
 
 
 
-# Download already indexed genomes
+# Download an already indexed genomes
 
 Our genomes are available ready to use as `.tar.gz` archives on our S3 server.
 They can be downloaded and extracted by running the following command in a terminal:
